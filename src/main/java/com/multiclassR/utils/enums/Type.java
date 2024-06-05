@@ -1,5 +1,5 @@
 package com.multiclassR.utils.enums;
 
 public enum Type {
-  JAVASCRIPT, JAVA
+  VIDEO, AUDIO, DOCUMENT
 }
