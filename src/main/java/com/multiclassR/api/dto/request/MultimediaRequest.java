@@ -26,9 +26,7 @@ public class MultimediaRequest {
 
   @NotNull(message = "La actividad de la multimedia no puede ser nula")
   private Boolean active;   
-  @FutureOrPresent(message = "La fecha de creación no puede ser anterior a la actual")
-  @NotNull(message = "La fecha de creación no puede ser nula")
-  private LocalDateTime createdAt;
+
   @NotNull(message = "El id de la actividad no puede ser nulo")
   private Long lessonId;
 }

@@ -21,9 +21,7 @@ public class StudentRequest {
   private String name;
   @Email
   private String email;
-  @FutureOrPresent(message = "La fecha de creación no puede ser anterior a la actual")
-  @NotBlank(message = "La fecha de creación no puede estar vacía")
-  private LocalDateTime createdAt;
+  
   @NotNull(message = "El estado del estudiante no puede ser nula")
   private Boolean active;
   @NotNull(message = "El id de la clase no puede ser nulo")
