@@ -31,13 +31,13 @@ public class MultimediaMapper {
 
 
   public Multimedia toEntity(MultimediaRequest request) {
-    Lesson lesson = lessonRepository.findById(request.getLessonId()).orElseThrow(() -> new IdNotFoundException("Lesson not found", request.getLessonId()));
+   
     return Multimedia.builder()
         .url(request.getUrl())
         .type(request.getType())
         .createdAt(LocalDateTime.now())
         .active(request.getActive())
-        .lesson(lesson)
+        
         .build();
   }
 }

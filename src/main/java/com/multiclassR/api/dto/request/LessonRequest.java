@@ -1,6 +1,8 @@
 package com.multiclassR.api.dto.request;
 
 
+import java.util.List;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -24,4 +26,6 @@ public class LessonRequest {
   private Boolean active;
   @NotBlank(message = "El id de la clase no puede estar vacío")
   private Long classId;
+
+  private List<MultimediaRequest> multimedias;
 }
