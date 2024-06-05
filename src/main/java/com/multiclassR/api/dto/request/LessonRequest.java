@@ -1,8 +1,6 @@
 package com.multiclassR.api.dto.request;
 
-import java.time.LocalDateTime;
 
-import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -21,9 +19,7 @@ public class LessonRequest {
   private String title;
   @NotBlank(message = "El contenido del curso no puede estar vacío")
   private String content;
-  @FutureOrPresent(message = "La fecha de creación no puede ser anterior a la actual")
-  @NotBlank(message = "La fecha de creación no puede estar vacía")
-  private LocalDateTime createdAt;
+
   @NotNull(message = "El estado de la clase no puede ser nula")
   private Boolean active;
   @NotBlank(message = "El id de la clase no puede estar vacío")

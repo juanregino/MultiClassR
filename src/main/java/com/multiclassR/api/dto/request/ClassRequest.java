@@ -1,8 +1,6 @@
 package com.multiclassR.api.dto.request;
 
-import java.time.LocalDateTime;
 
-import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -20,9 +18,7 @@ public class ClassRequest {
   private String name;
   @NotBlank(message = "La descripción de la clase no puede estar vacía")
   private String description; 
-  @FutureOrPresent(message = "La fecha de creación no puede ser anterior a la actual")
-  @NotNull(message = "La fecha de creación no puede estar vacía")
-  private LocalDateTime createdAt;
+
   @NotNull(message = "El estado de la clase no puede ser nula")
   private Boolean active;
   
