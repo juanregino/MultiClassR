@@ -39,13 +39,13 @@ public class StudentController {
 
   @GetMapping
     public ResponseEntity<Page<StudentResponse>> getStudents(
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String description,
+            @RequestParam(defaultValue = "") String name,
+            
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
         
         Pageable pageable = PageRequest.of(page , size);
-        return ResponseEntity.ok(studentService.findByNameOrDescription(name, description, pageable));
+        return ResponseEntity.ok(studentService.findByNameOrDescription(name, pageable));
     }
 
     @PatchMapping("/{id}/disable")

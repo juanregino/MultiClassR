@@ -7,7 +7,7 @@ import com.multiclassR.api.dto.request.StudentRequest;
 import com.multiclassR.api.dto.response.StudentResponse;
 
 public interface IStudentService {
-  public Page<StudentResponse> findByNameOrDescription(String name, String description, Pageable pageable);
+  public Page<StudentResponse> findByNameOrDescription(String name,  Pageable pageable);
   public StudentResponse findById(Long id);
   public StudentResponse create(StudentRequest student); 
   public StudentResponse disableStudent (Long id);
