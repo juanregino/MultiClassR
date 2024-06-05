@@ -1,5 +1,7 @@
 package com.multiclassR.api.dto.response;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,5 +15,6 @@ public class ClassBasicResponse {
   private Long id;
   private String name;
   private String description;
+  private LocalDateTime createdAt;
   private Boolean active;
 }

@@ -1,5 +1,7 @@
 package com.multiclassR.api.dto.response;
 
+import java.time.LocalDateTime;
+
 import com.multiclassR.utils.enums.Type;
 
 import lombok.AllArgsConstructor;
@@ -14,5 +16,7 @@ public class MultimediaResponse {
   private Long id;
   private Type type;
   private String url;
+    private LocalDateTime createdAt;
+
   private Boolean active;
 }
