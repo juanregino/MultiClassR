@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.multiclassR.api.dto.request.StudentRequest;
 import com.multiclassR.api.dto.response.StudentResponse;
-
+import com.multiclassR.api.dto.response.StudentWithClassResponse;
 import com.multiclassR.infraestructure.abstract_services.IStudentService;
 
 import lombok.RequiredArgsConstructor;
@@ -39,13 +39,13 @@ public class StudentController {
 
   @GetMapping
     public ResponseEntity<Page<StudentResponse>> getStudents(
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String description,
+            @RequestParam(defaultValue = "") String name,
+            
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
         
         Pageable pageable = PageRequest.of(page , size);
-        return ResponseEntity.ok(studentService.findByNameOrDescription(name, description, pageable));
+        return ResponseEntity.ok(studentService.findByNameOrDescription(name, pageable));
     }
 
     @PatchMapping("/{id}/disable")
@@ -59,7 +59,7 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StudentResponse> getStudent(@PathVariable Long id) {
+    public ResponseEntity<StudentWithClassResponse> getStudent(@PathVariable Long id) {
         return ResponseEntity.ok(studentService.findById(id));
         
     }

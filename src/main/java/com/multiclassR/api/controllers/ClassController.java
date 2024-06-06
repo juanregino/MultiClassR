@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.multiclassR.api.dto.request.ClassRequest;
 import com.multiclassR.api.dto.response.ClassBasicResponse;
+import com.multiclassR.api.dto.response.ClassWithStudentsResponse;
 import com.multiclassR.infraestructure.abstract_services.IClassService;
 
 @RestController
@@ -40,10 +41,9 @@ public class ClassController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<ClassBasicResponse>> getById(@PathVariable Long id,  @RequestParam(defaultValue = "0") int page,  
-            @RequestParam(defaultValue = "10") int size) {
-          Pageable pageable = PageRequest.of(page, size);    
-        return ResponseEntity.ok( classService.findById(id,pageable));
+    public ResponseEntity<Optional<ClassWithStudentsResponse>> getById(@PathVariable Long id) {
+            
+        return ResponseEntity.ok( classService.findById(id));
     }
 
     @PostMapping

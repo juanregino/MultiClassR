@@ -23,8 +23,11 @@ public class LessonService implements IlessonService {
   @Override
   public LessonResponse saveLesson(LessonRequest request) {
     Lesson lesson = lessonMapper.toEntity(request);
-    this.multimediaService.createMultimediaFromLesson(lesson.getId(), request.getMultimedias());
-    return lessonMapper.toResponse(lessonRepository.save(lesson));
+    Lesson save = lessonRepository.save(lesson);
+    this.multimediaService.createMultimediaFromLesson(save.getId(), request.getMultimedias());
+    
+    return lessonMapper.toResponse(save);
+
   }
 
   @Override
@@ -41,7 +44,7 @@ public class LessonService implements IlessonService {
   }
 
   private Lesson find(Long id) {
-    return lessonRepository.findById(id).orElseThrow(() -> new IdNotFoundException("id not found", id));
+    return lessonRepository.findById(id).orElseThrow(() -> new IdNotFoundException("Lesson not found", id));
   }
 }
 

@@ -25,6 +25,7 @@ public class LessonMapper {
   private final MultimediaMapper multimediaMapper;
   public LessonResponse toResponse(Lesson entity) {
     List<MultimediaResponse> multimedias = entity.getMultimedias().stream().map(this.multimediaMapper::toResponse).collect(Collectors.toList());
+    System.out.println(multimedias);
     return LessonResponse.builder()
         .id(entity.getId())
         .title(entity.getTitle())
@@ -33,10 +34,11 @@ public class LessonMapper {
         .active(entity.getActive())
         .multimedias(multimedias)
         .build();
+
   }
 
   public Lesson toEntity(LessonRequest request) {
-    Class clazz = classRepository.findById(request.getClassId()).orElseThrow(() -> new IdNotFoundException("Class not found", request.getClassId()));
+    Class clazz = classRepository.findByIdAndActiveTrue(request.getClassId()).orElseThrow(() -> new IdNotFoundException("ClassEntity not found", request.getClassId()));
     
     return Lesson.builder()
         .title(request.getTitle())

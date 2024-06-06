@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.multiclassR.api.dto.request.StudentRequest;
 import com.multiclassR.api.dto.response.StudentResponse;
+import com.multiclassR.api.dto.response.StudentWithClassResponse;
 import com.multiclassR.domain.entities.Student;
 import com.multiclassR.domain.repositories.StudentRepository;
 import com.multiclassR.infraestructure.abstract_services.IStudentService;
@@ -35,15 +36,15 @@ private StudentMapper studentMapper;
   }
 
   @Override
-  public StudentResponse findById(Long id) {
+  public StudentWithClassResponse findById(Long id) {
     
-    return this.studentMapper.toResponse(this.find(id));
+    return this.studentMapper.toResponseWithClassResponse(this.find(id));
   }
 
   @Override
-  public Page<StudentResponse> findByNameOrDescription(String name, String description, Pageable pageable) {
+  public Page<StudentResponse> findByNameOrDescription(String name,  Pageable pageable) {
     
-    return this.studentRepository.findByNameContainingAndActiveTrue(name, description, pageable).map(student -> this.studentMapper.toResponse(student));
+    return this.studentRepository.findByNameContainingAndActiveTrue(name,  pageable).map(student -> this.studentMapper.toResponse(student));
   }
 
   @Override
