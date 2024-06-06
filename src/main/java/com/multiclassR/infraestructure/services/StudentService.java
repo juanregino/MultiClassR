@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.multiclassR.api.dto.request.StudentRequest;
 import com.multiclassR.api.dto.response.StudentResponse;
+import com.multiclassR.api.dto.response.StudentWithClassResponse;
 import com.multiclassR.domain.entities.Student;
 import com.multiclassR.domain.repositories.StudentRepository;
 import com.multiclassR.infraestructure.abstract_services.IStudentService;
@@ -35,9 +36,9 @@ private StudentMapper studentMapper;
   }
 
   @Override
-  public StudentResponse findById(Long id) {
+  public StudentWithClassResponse findById(Long id) {
     
-    return this.studentMapper.toResponse(this.find(id));
+    return this.studentMapper.toResponseWithClassResponse(this.find(id));
   }
 
   @Override

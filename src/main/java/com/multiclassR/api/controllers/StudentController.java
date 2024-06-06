@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.multiclassR.api.dto.request.StudentRequest;
 import com.multiclassR.api.dto.response.StudentResponse;
-
+import com.multiclassR.api.dto.response.StudentWithClassResponse;
 import com.multiclassR.infraestructure.abstract_services.IStudentService;
 
 import lombok.RequiredArgsConstructor;
@@ -59,7 +59,7 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StudentResponse> getStudent(@PathVariable Long id) {
+    public ResponseEntity<StudentWithClassResponse> getStudent(@PathVariable Long id) {
         return ResponseEntity.ok(studentService.findById(id));
         
     }

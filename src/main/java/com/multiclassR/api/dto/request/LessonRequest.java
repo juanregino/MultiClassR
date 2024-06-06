@@ -24,7 +24,7 @@ public class LessonRequest {
 
   @NotNull(message = "El estado de la clase no puede ser nula")
   private Boolean active;
-  @NotBlank(message = "El id de la clase no puede estar vacío")
+  @NotNull(message = "El id de la clase no puede estar vacío")
   private Long classId;
 
   private List<MultimediaRequest> multimedias;

@@ -1,6 +1,7 @@
 package com.multiclassR.domain.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -37,7 +38,8 @@ public class Lesson {
   @Column(nullable = false)
   private Boolean active;
   @OneToMany(mappedBy = "lesson", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-  private List<Multimedia> multimedias;
+  @Builder.Default
+  private List<Multimedia> multimedias = new ArrayList<>();
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "class_id", referencedColumnName = "id")
