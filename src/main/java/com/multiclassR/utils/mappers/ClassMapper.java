@@ -1,19 +1,22 @@
 package com.multiclassR.utils.mappers;
 
 import java.time.LocalDateTime;
-
 import org.springframework.stereotype.Component;
 
 import com.multiclassR.api.dto.request.ClassRequest;
 import com.multiclassR.api.dto.response.ClassBasicResponse;
 import com.multiclassR.domain.entities.Class;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
+@Data
 public class ClassMapper {
   
+
   public ClassBasicResponse toResponse(Class classEntity) {
   return ClassBasicResponse.builder()
       .id(classEntity.getId())
@@ -32,4 +35,6 @@ public class ClassMapper {
         .active(request.getActive())
         .build();
   }
+
+  
 }

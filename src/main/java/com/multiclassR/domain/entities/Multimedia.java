@@ -32,6 +32,7 @@ public class Multimedia {
 
 
   private Long id;
+  @Column(length = 100)
   @Enumerated(EnumType.STRING)
   private Type type;
   @Lob
